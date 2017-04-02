@@ -6,7 +6,6 @@
 #include "Card.h"
 #include "Deck.h"
 #include "ComputerPlayer.h"
-//#include "DisplayGame.h"
 
 
 
@@ -22,7 +21,6 @@ namespace BogdanT
 	private:
 
 		std::unique_ptr<DisplayGame> dGamePtr;
-		//DisplayGame* dGamePtr;
 		Deck deck;
 		std::vector<Card> dPile;
 		std::vector<Player*> players;

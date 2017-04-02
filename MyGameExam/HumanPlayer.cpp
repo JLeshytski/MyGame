@@ -10,23 +10,33 @@ BogdanT::HumanPlayer::~HumanPlayer()
 
 BogdanT::Card BogdanT::HumanPlayer::atack()
 {
-	return Card(0,0);
+	return handPtr->getCard(gamePtr->makeChoice());
 }
+
+
 
 BogdanT::Card BogdanT::HumanPlayer::defend()
 {
-	return Card(0,0);
+	return handPtr->getCard(gamePtr->makeChoice());
 }
+
+
+
 
 bool BogdanT::HumanPlayer::isDone()
 {
 	return handPtr->isEmpty();
 }
 
+
+
+
 bool BogdanT::HumanPlayer::isDefendAble()
 {
 	return handPtr->is_beatable(dPilePtr->back());
 }
+
+
 
 bool BogdanT::HumanPlayer::isThrowInAble()
 {
@@ -38,6 +48,8 @@ bool BogdanT::HumanPlayer::isThrowInAble()
 	return false;
 }
 
+
+
 void BogdanT::HumanPlayer::drawDPile()
 {
 	for (Card& curCard : *dPilePtr)
@@ -47,6 +59,8 @@ void BogdanT::HumanPlayer::drawDPile()
 	handPtr->Sort();
 	dPilePtr->clear();
 }
+
+
 
 void BogdanT::HumanPlayer::drawDeck()
 {

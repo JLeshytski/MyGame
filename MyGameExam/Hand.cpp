@@ -212,3 +212,9 @@ std::vector<BogdanT::Card> BogdanT::Hand::getCards()
 }
 
 
+int BogdanT::Hand::getSize()
+{
+	return hand.size();
+}
+
+

@@ -13,7 +13,7 @@ BogdanT::Game::Game(int numOfHumanPlayers, int numOfComputerPlayers)
 	{
 		std::string name;
 		std::cout << "Input name of Player" << i + 1 << ":";
-		registerPlayer(new HumanPlayer(new Hand(&deck),&dPile,name));
+		registerPlayer(new HumanPlayer(new Hand(&deck),&dPile,name,this));
 		dGamePtr->addPlayer(name);
 	}
 	for (int i = 0; i < numOfComputerPlayers; ++i)
@@ -54,6 +54,8 @@ void BogdanT::Game::dealTheCards()
 BogdanT::GameCondition BogdanT::Game::startTheGame()
 {
 	GameCondition gameCondition = InProcess;
+	Player* p1 = players[0];
+	Player* p2 = players[1];
 	while (gameCondition == InProcess)
 	{
 		if (players[0]->isDone())
@@ -120,7 +122,7 @@ void BogdanT::Game::printGameCondition()
 
 int BogdanT::Game::makeChoice()
 {
-	return 0;
+	return dGamePtr->makeChoice();
 }
 
 

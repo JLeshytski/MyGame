@@ -10,6 +10,7 @@ namespace BogdanT
 
 	// создать указатель на отбой и реализовать методы зайти, отбиться, забрать карты, 
 	// потянуть карты.
+	class Game;
 
 	class HumanPlayer: public Player
 	{
@@ -17,10 +18,11 @@ namespace BogdanT
 		std::string name;
 		std::unique_ptr<Hand> handPtr;
 		std::vector<Card>*  dPilePtr;
+		Game* gamePtr;
 
 	public:
-		HumanPlayer(Hand* pointerToHand, std::vector<Card>* pointerToDPile, std::string playerName)
-			: Player(), handPtr(pointerToHand), dPilePtr(pointerToDPile), name(playerName){}
+		HumanPlayer(Hand* pointerToHand, std::vector<Card>* pointerToDPile, std::string playerName, Game* _gamePtr)
+			: Player(), handPtr(pointerToHand), dPilePtr(pointerToDPile), name(playerName), gamePtr(_gamePtr){}
 		~HumanPlayer();
 
 	public:

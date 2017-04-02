@@ -19,6 +19,7 @@ namespace BogdanT
 		int trump;
 		short x,y;
 		Game* gamePtr;
+		int choice;
 
 	public:
 		DisplayGame(Game* pointerToGame): gamePtr(pointerToGame)
@@ -31,6 +32,7 @@ namespace BogdanT
 	private:
 
 		void setCursor(short _X, short _Y);
+		void setColor(short foreColor, short bkgndColor);
 		
 
 	public:
@@ -40,6 +42,8 @@ namespace BogdanT
 
 		//Add player name to the list of players
 		void addPlayer(std::string playerName);
+
+		int makeChoice();
 
 
 	};
