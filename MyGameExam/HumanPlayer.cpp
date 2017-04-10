@@ -10,14 +10,24 @@ BogdanT::HumanPlayer::~HumanPlayer()
 
 BogdanT::Card BogdanT::HumanPlayer::atack()
 {
-	return handPtr->getCard(gamePtr->makeChoice());
+	int cardIndex = gamePtr->makeChoice();
+	if (cardIndex < handPtr->getSize())
+	{
+		return handPtr->getCard(cardIndex);
+	}
+	return Card(-1, -1);
 }
 
 
 
 BogdanT::Card BogdanT::HumanPlayer::defend()
 {
-	return handPtr->getCard(gamePtr->makeChoice());
+	int cardIndex = gamePtr->makeChoice();
+	if (cardIndex < handPtr->getSize())
+	{
+		return handPtr->getCard(cardIndex);
+	}
+	return Card(-1,-1);
 }
 
 

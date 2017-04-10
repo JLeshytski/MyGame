@@ -20,12 +20,14 @@ namespace BogdanT
 		short x,y;
 		Game* gamePtr;
 		int choice;
+		HANDLE hConsole;
 
 	public:
 		DisplayGame(Game* pointerToGame): gamePtr(pointerToGame)
 		{
 			gameState = gamePtr->GetGameState();
 			trump = gamePtr->getTrump();
+			hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 		}
 		~DisplayGame();
 

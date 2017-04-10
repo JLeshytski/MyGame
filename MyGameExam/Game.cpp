@@ -8,19 +8,19 @@
 BogdanT::Game::Game(int numOfHumanPlayers, int numOfComputerPlayers)
 {
 	dGamePtr = std::make_unique<DisplayGame>(this);
-	//dGamePtr = new DisplayGame(this);
 	for (int i = 0; i < numOfHumanPlayers; ++i)
 	{
-		std::string name;
-		std::cout << "Input name of Player" << i + 1 << ":";
-		registerPlayer(new HumanPlayer(new Hand(&deck),&dPile,name,this));
-		dGamePtr->addPlayer(name);
+		std::stringstream name;
+		name << "Player" << i + 1;
+		registerPlayer(new HumanPlayer(new Hand(&deck),&dPile,name.str(),this));
+		dGamePtr->addPlayer(name.str());
 	}
 	for (int i = 0; i < numOfComputerPlayers; ++i)
 	{
 		std::stringstream str;
-		str << "Computer" << i;
+		str << "Computer" << i+1;
 		registerPlayer(new ComputerPlayer(new Hand(&deck),&dPile,str.str()));
+		dGamePtr->addPlayer(str.str());
 	}
 	
 	dealTheCards();
@@ -51,52 +51,86 @@ void BogdanT::Game::dealTheCards()
 
 
 
-BogdanT::GameCondition BogdanT::Game::startTheGame()
+int BogdanT::Game::startTheGame()
 {
 	GameCondition gameCondition = InProcess;
 	Player* p1 = players[0];
 	Player* p2 = players[1];
+	Card tmpCard(0,0);
+
 	while (gameCondition == InProcess)
 	{
-		if (players[0]->isDone())
+		if (p1->isDone())
 		{
-			gameCondition = (players[1]->isDone() ? Draw : Win);
+			gameCondition = (p2->isDone() ? Draw : Win);
 			break;
 		}
 
 		bool defence;
-		while (dPile.empty() || players[0]->isThrowInAble())
+		while (dPile.empty() || p1->isThrowInAble())
 		{
-			dPile.push_back(players[0]->atack());
-			printGameCondition();
+			dGamePtr->update();
+			tmpCard = p1->atack();
 
-			if (players[1]->isDefendAble())
+			if (tmpCard.getRank() < 0)
 			{
-				dPile.push_back(players[1]->defend());
+				break;
+			}
+
+			dPile.push_back(tmpCard);
+			dGamePtr->update();
+
+			if (p2->isDefendAble())
+			{
+				tmpCard = p2->defend();
+
+				if (tmpCard.getRank() < 0)
+				{
+					defence = false;
+					break;
+				}
+
+				dPile.push_back(tmpCard);
 				defence = true;
-				printGameCondition();
+				dGamePtr->update();
 			}
 			else
 			{
-				players[1]->drawDPile();
 				defence = false;
-				std::cout << "Player draw the discard pile" << std::endl;
-				_getch();
-				printGameCondition();
 				break;
 			}
+		}
+
+		if (defence)
+		{
+			std::swap(p1, p2);
+		}
+
+		else
+		{
+			p2->drawDPile();
+			system("cls");
+			std::cout << "Player draw the discard pile" << std::endl;
+			_getch();
+			dGamePtr->update();
 		}
 
 		if (!(dPile.empty()))
 			dPile.clear();
 		dealTheCards();
 
-		if (defence)
-		{
-			std::swap(players[0],players[1]);
-		}
+		
 	}
-	return gameCondition;
+
+	switch (gameCondition)
+	{
+	case GameCondition::Win:
+		return (std::find(players.begin(),players.end(),p1)-players.begin());
+
+	case GameCondition::Draw:
+		return -1;
+	}
+
 }
 
 
@@ -135,13 +169,13 @@ int BogdanT::Game::getTrump()
 
 
 
-GAMESTATE BogdanT::Game::GetGameState()
+std::vector<std::vector<BogdanT::Card>> BogdanT::Game::GetGameState()
 {
-	GAMESTATE ret;
-	ret.push_back(dPile);
+	std::vector<std::vector<BogdanT::Card>> ret;
 	for (Player* curPlayer : players)
 	{
 		ret.push_back(curPlayer->GetCardsInHand());
 	}
+	ret.push_back(dPile);
 	return ret;
 }

@@ -11,7 +11,6 @@
 
 namespace BogdanT
 {
-#define GAMESTATE std::vector<std::vector<BogdanT::Card>>
 	enum GameCondition {InProcess,Win,Draw};
 	class DisplayGame;
 
@@ -37,11 +36,11 @@ namespace BogdanT
 
 	public:
 
-		GameCondition startTheGame();
+		int startTheGame();
 		void printGameCondition();
 		int makeChoice();
 		int getTrump();
-		GAMESTATE GetGameState();
+		std::vector<std::vector<Card>> GetGameState();
 	};
 
 }

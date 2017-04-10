@@ -1,4 +1,5 @@
 ﻿  Game.cpp
 c:\gitprogects\gamefool\mygame\mygame\mygameexam\game.cpp(46): warning C4018: '<': signed/unsigned mismatch
+c:\gitprogects\gamefool\mygame\mygame\mygameexam\game.cpp(134): warning C4715: 'BogdanT::Game::startTheGame': not all control paths return a value
   MyGameExam.vcxproj -> C:\GitProgects\GameFool\MyGame\MyGame\Debug\MyGameExam.exe
   MyGameExam.vcxproj -> C:\GitProgects\GameFool\MyGame\MyGame\Debug\MyGameExam.pdb (Partial PDB)

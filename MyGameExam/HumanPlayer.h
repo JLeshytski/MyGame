@@ -7,9 +7,6 @@
 
 namespace BogdanT
 {
-
-	// создать указатель на отбой и реализовать методы зайти, отбиться, забрать карты, 
-	// потянуть карты.
 	class Game;
 
 	class HumanPlayer: public Player

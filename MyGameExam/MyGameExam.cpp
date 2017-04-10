@@ -9,6 +9,8 @@
 #include "Game.h"
 using namespace BogdanT;
 
+
+
 int main()
 {
 	srand(time(NULL));
@@ -35,8 +37,9 @@ int main()
 	std::cin >> tmp.first >> tmp.second;
 	std::cout << "card to beat = " << hand.getHigherCard(Card(tmp.first,tmp.second));*/
 
-	Game game(0, 2);
+	Game game(1, 1);
 	game.startTheGame();
+
 
     return 0;
 }
