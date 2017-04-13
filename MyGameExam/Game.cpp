@@ -101,6 +101,9 @@ int BogdanT::Game::startTheGame()
 			}
 		}
 
+		_getch();
+		std::cin.clear();
+
 		if (defence)
 		{
 			std::swap(p1, p2);

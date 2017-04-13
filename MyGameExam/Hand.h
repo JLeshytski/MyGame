@@ -97,6 +97,7 @@ namespace BogdanT
 		std::vector<Card> getCards();
 
 		int getSize();
+		Card operator[](int cardIndex);
 
 	};
 

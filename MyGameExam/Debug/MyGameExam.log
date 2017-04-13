@@ -1,5 +1,9 @@
-﻿  Game.cpp
-c:\gitprogects\gamefool\mygame\mygame\mygameexam\game.cpp(46): warning C4018: '<': signed/unsigned mismatch
-c:\gitprogects\gamefool\mygame\mygame\mygameexam\game.cpp(134): warning C4715: 'BogdanT::Game::startTheGame': not all control paths return a value
+﻿  DisplayGame.cpp
+c:\gitprogects\gamefool\mygame\mygame\mygameexam\displaygame.cpp(57): warning C4018: '>': signed/unsigned mismatch
+c:\gitprogects\gamefool\mygame\mygame\mygameexam\displaygame.cpp(57): warning C4018: '<': signed/unsigned mismatch
+c:\gitprogects\gamefool\mygame\mygame\mygameexam\displaygame.cpp(59): warning C4018: '>': signed/unsigned mismatch
+c:\gitprogects\gamefool\mygame\mygame\mygameexam\displaygame.cpp(81): warning C4018: '<': signed/unsigned mismatch
+c:\gitprogects\gamefool\mygame\mygame\mygameexam\displaygame.cpp(86): warning C4018: '<': signed/unsigned mismatch
+c:\gitprogects\gamefool\mygame\mygame\mygameexam\displaygame.cpp(99): warning C4267: 'argument': conversion from 'size_t' to 'short', possible loss of data
   MyGameExam.vcxproj -> C:\GitProgects\GameFool\MyGame\MyGame\Debug\MyGameExam.exe
   MyGameExam.vcxproj -> C:\GitProgects\GameFool\MyGame\MyGame\Debug\MyGameExam.pdb (Partial PDB)

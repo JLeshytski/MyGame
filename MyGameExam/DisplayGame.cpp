@@ -41,7 +41,6 @@ int BogdanT::DisplayGame::makeChoice()
 	choice = 0;
 	for (;;)
 	{
-		system("cls");
 		showGameState();
 		int key = _getch();
 		if (224 == key)
@@ -77,6 +76,7 @@ void BogdanT::DisplayGame::update()
 
 void BogdanT::DisplayGame::showGameState()
 {
+	system("cls");
 	int i = 0; // position X
 	for (; i < players.size(); ++i)
 	{
@@ -113,7 +113,7 @@ void BogdanT::DisplayGame::showGameState()
 
 	// Printing  discard pile
 	setCursor(i*25,0);
-	std::cout << "Game field" << std::endl;
+	std::cout << "Game field(trump - " << suits[this->trump] << ')' << std::endl;
 	int n = 1;
 	for (BogdanT::Card curCard : gameState[2])
 	{

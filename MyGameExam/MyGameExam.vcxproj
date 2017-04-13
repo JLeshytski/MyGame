@@ -148,7 +148,6 @@
     <ClInclude Include="Card.h" />
     <ClInclude Include="ComputerPlayer.h" />
     <ClInclude Include="Deck.h" />
-    <ClInclude Include="DiscardPile.h" />
     <ClInclude Include="DisplayGame.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Hand.h" />
@@ -161,7 +160,6 @@
     <ClCompile Include="Card.cpp" />
     <ClCompile Include="ComputerPlayer.cpp" />
     <ClCompile Include="Deck.cpp" />
-    <ClCompile Include="DiscardPile.cpp" />
     <ClCompile Include="DisplayGame.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="Hand.cpp" />

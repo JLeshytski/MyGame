@@ -30,6 +30,21 @@ bool BogdanT::Card::operator==(const Card & received_card)
 
 
 
+bool BogdanT::Card::operator==(const int rank)
+{
+	return this->getRank() == rank;
+}
+
+
+
+
+bool BogdanT::Card::operator!=(const Card & received_card)
+{
+	return this->getRank() != received_card.getRank();
+}
+
+
+
 
 bool BogdanT::Card::sameSuit(int suit) const
 {
@@ -58,6 +73,7 @@ bool BogdanT::Card::operator<(const Card & received_card) const
 {
 	return rank < received_card.getRank();
 }
+
 
 void BogdanT::Card::Print()
 {

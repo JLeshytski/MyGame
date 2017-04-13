@@ -2,7 +2,6 @@
 #ifndef _HUMANPLAYER_
 #define _HUMANPLAYER_
 #include "Player.h"
-#include "DiscardPile.h"
 #include "Hand.h"
 
 namespace BogdanT
