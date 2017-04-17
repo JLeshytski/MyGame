@@ -1,18 +1,15 @@
-﻿  stdafx.cpp
-  Player.cpp
-  MyGameExam.cpp
-c:\users\bogdan_ot\documents\visual studio 2017\projects\mygameexam\mygameexam\mygameexam.cpp(14): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-  HumanPlayer.cpp
-  Hand.cpp
-  Game.cpp
-c:\users\bogdan_ot\documents\visual studio 2017\projects\mygameexam\mygameexam\game.cpp(46): warning C4018: '<': signed/unsigned mismatch
+﻿  Game.cpp
+c:\gitprogects\gamefool\mygame\mygame\mygameexam\game.cpp(46): warning C4018: '<': signed/unsigned mismatch
   DisplayGame.cpp
-c:\users\bogdan_ot\documents\visual studio 2017\projects\mygameexam\mygameexam\displaygame.cpp(34): warning C4018: '<': signed/unsigned mismatch
-  DiscardPile.cpp
-  Deck.cpp
-  ComputerPlayer.cpp
-  Card.cpp
+c:\gitprogects\gamefool\mygame\mygame\mygameexam\displaygame.cpp(58): warning C4018: '>': signed/unsigned mismatch
+c:\gitprogects\gamefool\mygame\mygame\mygameexam\displaygame.cpp(58): warning C4018: '<': signed/unsigned mismatch
+c:\gitprogects\gamefool\mygame\mygame\mygameexam\displaygame.cpp(60): warning C4018: '>': signed/unsigned mismatch
+c:\gitprogects\gamefool\mygame\mygame\mygameexam\displaygame.cpp(93): warning C4018: '<': signed/unsigned mismatch
+c:\gitprogects\gamefool\mygame\mygame\mygameexam\displaygame.cpp(98): warning C4018: '<': signed/unsigned mismatch
+c:\gitprogects\gamefool\mygame\mygame\mygameexam\displaygame.cpp(111): warning C4267: 'argument': conversion from 'size_t' to 'short', possible loss of data
+c:\gitprogects\gamefool\mygame\mygame\mygameexam\displaygame.cpp(162): warning C4018: '<': signed/unsigned mismatch
+c:\gitprogects\gamefool\mygame\mygame\mygameexam\displaygame.cpp(183): warning C4018: '>': signed/unsigned mismatch
   Generating Code...
-c:\users\bogdan_ot\documents\visual studio 2017\projects\mygameexam\mygameexam\computerplayer.cpp(28): warning C4715: 'BogdanT::ComputerPlayer::atack': not all control paths return a value
-  MyGameExam.vcxproj -> C:\Users\Bogdan_OT\Documents\Visual Studio 2017\Projects\MyGameExam\Debug\MyGameExam.exe
-  MyGameExam.vcxproj -> C:\Users\Bogdan_OT\Documents\Visual Studio 2017\Projects\MyGameExam\Debug\MyGameExam.pdb (Partial PDB)
+c:\gitprogects\gamefool\mygame\mygame\mygameexam\game.cpp(135): warning C4715: 'BogdanT::Game::startTheGame': not all control paths return a value
+  MyGameExam.vcxproj -> C:\GitProgects\GameFool\MyGame\MyGame\Debug\MyGameExam.exe
+  MyGameExam.vcxproj -> C:\GitProgects\GameFool\MyGame\MyGame\Debug\MyGameExam.pdb (Partial PDB)

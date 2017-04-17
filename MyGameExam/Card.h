@@ -36,6 +36,8 @@ namespace BogdanT
 
 		// returns true if received the same card
 		bool operator==(const Card& received_card);
+		bool operator==(const int rank);
+		bool operator!=(const Card& received_card);
 		bool operator>(const Card& received_card)const;
 		bool operator<(const Card& recived_card)const;
 

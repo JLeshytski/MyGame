@@ -6,13 +6,11 @@
 #include "Card.h"
 #include "Deck.h"
 #include "ComputerPlayer.h"
-//#include "DisplayGame.h"
 
 
 
 namespace BogdanT
 {
-#define GAMESTATE std::vector<std::vector<BogdanT::Card>>
 	enum GameCondition {InProcess,Win,Draw};
 	class DisplayGame;
 
@@ -21,8 +19,7 @@ namespace BogdanT
 
 	private:
 
-		std::unique_ptr<DisplayGame> dGamePtr;
-		//DisplayGame* dGamePtr;
+		DisplayGame* dGamePtr;
 		Deck deck;
 		std::vector<Card> dPile;
 		std::vector<Player*> players;
@@ -32,18 +29,21 @@ namespace BogdanT
 
 		void registerPlayer(Player* playerPtr);
 		void dealTheCards();
+		void _printGameCondition();
 
 	public:
-		Game(int numOfHumanPlayers, int numOfComputerPlayers);
+		Game(DisplayGame *pointeToDGame, int numOfHumanPlayers, int numOfComputerPlayers);
 		~Game();
 
 	public:
 
-		GameCondition startTheGame();
-		void printGameCondition();
+
+		int startTheGame();
+
+		
 		int makeChoice();
 		int getTrump();
-		GAMESTATE GetGameState();
+		std::vector<std::vector<Card>> GetGameState();
 	};
 
 }

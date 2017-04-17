@@ -96,6 +96,9 @@ namespace BogdanT
 		//returns the copy of hand Cards
 		std::vector<Card> getCards();
 
+		int getSize();
+		Card operator[](int cardIndex);
+
 	};
 
 

@@ -15,31 +15,43 @@ namespace BogdanT
 	{
 	private:
 		std::vector<std::vector<BogdanT::Card>> gameState;
+		//list of players name
 		std::vector<std::string> players;
 		int trump;
-		short x,y;
 		Game* gamePtr;
+		int choice;
+		HANDLE hConsole;
 
 	public:
-		DisplayGame(Game* pointerToGame): gamePtr(pointerToGame)
+		DisplayGame() : gamePtr(nullptr)
 		{
-			gameState = gamePtr->GetGameState();
-			trump = gamePtr->getTrump();
+			hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
 		}
 		~DisplayGame();
 
 	private:
 
+		//Set cursot position
 		void setCursor(short _X, short _Y);
+
+		//Set color of the text
+		void setColor(short foreColor, short bkgndColor);
 		
 
 	public:
 
+		void RegisterGame(Game* pointerToGame);
+
 		void update();
 		void showGameState();
+		void showGameResult(int playerIndex);
+
+		void mainMenu();
 
 		//Add player name to the list of players
 		void addPlayer(std::string playerName);
+
+		int makeChoice();
 
 
 	};

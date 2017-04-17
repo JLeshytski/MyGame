@@ -4,7 +4,6 @@
 
 #include "Player.h"
 #include "Hand.h"
-#include "DiscardPile.h"
 #include "Card.h"
 
 namespace BogdanT
