@@ -5,9 +5,9 @@
 
 
 
-BogdanT::Game::Game(int numOfHumanPlayers, int numOfComputerPlayers)
+BogdanT::Game::Game(DisplayGame* pointerToDGame, int numOfHumanPlayers, int numOfComputerPlayers)
 {
-	dGamePtr = std::make_unique<DisplayGame>(this);
+	dGamePtr = pointerToDGame;
 	for (int i = 0; i < numOfHumanPlayers; ++i)
 	{
 		std::stringstream name;
@@ -60,11 +60,6 @@ int BogdanT::Game::startTheGame()
 
 	while (gameCondition == InProcess)
 	{
-		if (p1->isDone())
-		{
-			gameCondition = (p2->isDone() ? Draw : Win);
-			break;
-		}
 
 		bool defence;
 		while (dPile.empty() || p1->isThrowInAble())
@@ -101,8 +96,7 @@ int BogdanT::Game::startTheGame()
 			}
 		}
 
-		_getch();
-		std::cin.clear();
+		Sleep(300);
 
 		if (defence)
 		{
@@ -122,7 +116,11 @@ int BogdanT::Game::startTheGame()
 			dPile.clear();
 		dealTheCards();
 
-		
+		if (p1->isDone())
+		{
+			gameCondition = (p2->isDone() ? Draw : Win);
+			break;
+		}
 	}
 
 	switch (gameCondition)
@@ -138,7 +136,7 @@ int BogdanT::Game::startTheGame()
 
 
 
-void BogdanT::Game::printGameCondition()
+void BogdanT::Game::_printGameCondition()
 {
 	system("cls");
 	for (Player* curPlayer : players)

@@ -42,6 +42,7 @@ int BogdanT::DisplayGame::makeChoice()
 	for (;;)
 	{
 		showGameState();
+		std::cin.clear();
 		int key = _getch();
 		if (224 == key)
 		{
@@ -61,6 +62,17 @@ int BogdanT::DisplayGame::makeChoice()
 		if (13 == key) return choice;
 	}
 	return 0;
+}
+
+
+
+
+
+void BogdanT::DisplayGame::RegisterGame(Game * pointerToGame)
+{
+	gamePtr = pointerToGame;
+	gameState = gamePtr->GetGameState();
+	trump = gamePtr->getTrump();
 }
 
 
@@ -120,5 +132,90 @@ void BogdanT::DisplayGame::showGameState()
 		setCursor(i*25,n++);
 		std::cout << ranks[curCard.getRank()] << " " << suits[curCard.getSuit()] << std::endl;
 	}
+
 	std::cout << std::endl;
 }
+
+
+
+
+
+void BogdanT::DisplayGame::showGameResult(int playerIndex)
+{
+	setCursor(15, 20);
+	std::cout << (playerIndex < 0 ? "It is Draw" : (players[playerIndex] + " win"));
+}
+
+
+
+
+void BogdanT::DisplayGame::mainMenu()
+{
+	std::vector<std::string> menuPoints = { "Start the game","Quit" };
+	int ch = 0;
+
+	for (;;)
+	{
+		while(true)
+		{
+			system("cls");
+			for (int i = 0; i < menuPoints.size(); ++i)
+			{
+				setCursor(30, 10 + i);
+				if (ch == i)
+					setColor(0, 7);
+				std::cout << menuPoints[i];
+				setColor(7, 0);
+			}
+
+			std::cin.clear();
+			int key = _getch();
+			if (224 == key)
+			{
+				switch (_getch())
+				{
+				case 72: --ch;
+					break;
+				case 80: ++ch;
+					break;
+				}
+			}
+			if (ch > menuPoints.size() - 1)
+				ch = 0;
+			if (ch < 0)
+				ch = menuPoints.size() - 1;
+
+			if (13 == key)
+				break;
+		}
+
+		switch (ch)
+		{
+
+		case 0:
+		{
+			//in case it is not the first game
+			if (players.size())
+				players.clear();
+
+			//creating new game
+			RegisterGame(new Game(this,1,1));
+			//game procedure
+			showGameResult(gamePtr->startTheGame());
+			std::cout << " Press any key to continue" << std::endl;
+			_getch();
+			std::cin.clear();
+			delete gamePtr;
+			break;
+		}
+
+		case 1: 
+			exit(0);
+		}
+	}
+}
+
+
+
+
+

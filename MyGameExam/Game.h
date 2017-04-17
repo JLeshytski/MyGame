@@ -19,7 +19,7 @@ namespace BogdanT
 
 	private:
 
-		std::unique_ptr<DisplayGame> dGamePtr;
+		DisplayGame* dGamePtr;
 		Deck deck;
 		std::vector<Card> dPile;
 		std::vector<Player*> players;
@@ -29,15 +29,18 @@ namespace BogdanT
 
 		void registerPlayer(Player* playerPtr);
 		void dealTheCards();
+		void _printGameCondition();
 
 	public:
-		Game(int numOfHumanPlayers, int numOfComputerPlayers);
+		Game(DisplayGame *pointeToDGame, int numOfHumanPlayers, int numOfComputerPlayers);
 		~Game();
 
 	public:
 
+
 		int startTheGame();
-		void printGameCondition();
+
+		
 		int makeChoice();
 		int getTrump();
 		std::vector<std::vector<Card>> GetGameState();

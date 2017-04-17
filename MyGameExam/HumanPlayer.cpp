@@ -40,7 +40,9 @@ BogdanT::Card BogdanT::HumanPlayer::defend()
 	do
 	{
 		cardIndex = gamePtr->makeChoice();
-		tmpCard = handPtr->operator[](cardIndex);
+		if (cardIndex > handPtr->getSize()) break;
+		else
+			tmpCard = handPtr->operator[](cardIndex);
 	} while ((tmpCard.getSuit() != dPilePtr->back().getSuit() && tmpCard.getSuit() != gamePtr->getTrump()) 
 		|| ((tmpCard.sameSuit(dPilePtr->back().getSuit()) && tmpCard < dPilePtr->back())));
 
