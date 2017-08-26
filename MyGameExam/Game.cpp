@@ -5,7 +5,7 @@
 
 
 
-BogdanT::Game::Game(DisplayGame* pointerToDGame, int numOfHumanPlayers, int numOfComputerPlayers)
+BogdanT::Game::Game(Display* pointerToDGame, int numOfHumanPlayers, int numOfComputerPlayers)
 {
 	dGamePtr = pointerToDGame;
 	for (int i = 0; i < numOfHumanPlayers; ++i)
@@ -98,22 +98,24 @@ int BogdanT::Game::startTheGame()
 
 		Sleep(300);
 
-		if (defence)
-		{
-			std::swap(p1, p2);
-		}
-
-		else
-		{
-			p2->drawDPile();
-			system("cls");
-			std::cout << "Player draw the discard pile" << std::endl;
-			_getch();
-			dGamePtr->update();
-		}
-
 		if (!(dPile.empty()))
+		{
+			if (defence)
+			{
+				std::swap(p1, p2);
+			}
+
+			else
+			{
+				p2->drawDPile();
+				system("cls");
+				std::cout << "Player draw the discard pile" << std::endl;
+				_getch();
+				dGamePtr->update();
+			}
 			dPile.clear();
+		}
+
 		dealTheCards();
 
 		if (p1->isDone())

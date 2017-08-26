@@ -12,14 +12,18 @@
 namespace BogdanT
 {
 	enum GameCondition {InProcess,Win,Draw};
-	class DisplayGame;
+	class Display;
+
+
+	// A main Game class.
+	// Contains a game logic and Players information
 
 	class Game
 	{
 
 	private:
 
-		DisplayGame* dGamePtr;
+		Display* dGamePtr;
 		Deck deck;
 		std::vector<Card> dPile;
 		std::vector<Player*> players;
@@ -27,22 +31,28 @@ namespace BogdanT
 
 	private:
 
-		void registerPlayer(Player* playerPtr);
+		
 		void dealTheCards();
+
+		//helping method
 		void _printGameCondition();
 
 	public:
-		Game(DisplayGame *pointeToDGame, int numOfHumanPlayers, int numOfComputerPlayers);
+		Game(Display *pointeToDGame, int numOfHumanPlayers, int numOfComputerPlayers);
 		~Game();
 
 	public:
 
-
+		// main game method
 		int startTheGame();
 
-		
+		//Registration of new player
+		void registerPlayer(Player* playerPtr);
+		//method called the same method in Display
 		int makeChoice();
+		//returns a trump
 		int getTrump();
+		//returns a game state to Display
 		std::vector<std::vector<Card>> GetGameState();
 	};
 

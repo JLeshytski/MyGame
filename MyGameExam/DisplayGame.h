@@ -2,18 +2,17 @@
 #ifndef _DISPLAYGAME_
 #define _DISPLAYGAME_
 #include "Game.h"
+#include "Display.h"
 
 
 namespace BogdanT
 {
-
-
-
-//#define GAMESTATE std::vector<std::vector<BogdanT::Card>>
 	
-	class DisplayGame
+	class DisplayGame: public Display
 	{
 	private:
+		
+		//contains the list of users cards and discard pile
 		std::vector<std::vector<BogdanT::Card>> gameState;
 		//list of players name
 		std::vector<std::string> players;
@@ -26,6 +25,11 @@ namespace BogdanT
 		DisplayGame() : gamePtr(nullptr)
 		{
 			hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
+			CONSOLE_CURSOR_INFO lpCursor;
+			GetConsoleCursorInfo(hConsole, &lpCursor);
+			lpCursor.bVisible = false;
+			lpCursor.dwSize = 1;
+			SetConsoleCursorInfo(hConsole, &lpCursor);
 		}
 		~DisplayGame();
 
